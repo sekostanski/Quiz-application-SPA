@@ -1,0 +1,350 @@
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+  @media only screen and (max-width: 599px) {
+    html {
+      font-size: 62.5%; } }
+  @media only screen and (min-width: 600px) and (max-width: 899px) {
+    html {
+      font-size: 55%; } }
+  @media only screen and (min-width: 900px) and (max-width: 1199px) {
+    html {
+      font-size: 57.5%; } }
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  line-height: 1.6; }
+  @media only screen and (max-width: 599px) {
+    body {
+      width: 96%;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 600px) and (max-width: 899px) {
+    body {
+      width: 98%;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 900px) and (max-width: 1199px) {
+    body {
+      width: 98%;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 1200px) and (max-width: 1419px) {
+    body {
+      width: 98%;
+      margin: 0 auto; } }
+
+.container {
+  max-width: 117.2rem;
+  margin: 0 auto; }
+
+.bttn-main:link,
+.bttn-main:visited {
+  display: inline-block;
+  padding: 1.1rem 2.1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1;
+  color: #fff;
+  border-radius: 26px;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: #16d3fe;
+  transition: all 1s; }
+  @media only screen and (max-width: 599px) {
+    .bttn-main:link,
+    .bttn-main:visited {
+      width: 60%;
+      margin-top: 2.5rem;
+      margin-bottom: 3rem; } }
+
+.bttn {
+  display: inline-block;
+  padding: 1.3rem 3.8rem;
+  background-color: #6fbe2e;
+  border-radius: 5rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  transition: 1s all; }
+  .bttn:hover {
+    background-color: #7aca39;
+    box-shadow: 0 2.9rem 4.6rem rgba(0, 0, 0, 0.1); }
+
+.bttn.newGame {
+  margin-top: 3rem;
+  background-color: #7aca39; }
+
+.bttn.category__action {
+  box-shadow: none; }
+
+#main__container {
+  height: 100vh;
+  width: 100%; }
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f1f7f8; }
+  .welcome__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 111.8rem;
+    margin: 0 auto; }
+  .welcome__content {
+    text-align: center; }
+  .welcome__heading {
+    font-size: 6.8rem; }
+  .welcome__instructions {
+    margin-bottom: 3rem;
+    font-size: 1.6rem; }
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f1f7f8;
+  animation-name: show;
+  animation-duration: 2s; }
+  .category__container {
+    max-width: 111.8rem;
+    margin: 0 auto; }
+  .category__header {
+    font-size: 2rem;
+    font-weight: 600; }
+  .category__select {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem; }
+  .category__action {
+    margin-top: 4rem;
+    font-size: 1.1rem;
+    font-weight: 600; }
+  .category__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-basis: 26rem;
+    height: 26rem;
+    margin-top: 2rem;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: 1s all; }
+    .category__box:hover {
+      box-shadow: 0 2.9rem 4.6rem rgba(0, 0, 0, 0.1); }
+  .category__box-header {
+    font-size: 1.7rem;
+    color: #31bff0; }
+
+.quiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f1f7f8;
+  animation-name: show;
+  animation-duration: 2s; }
+  .quiz__container {
+    width: 111.8rem;
+    height: 40rem;
+    margin: 0 auto; }
+  .quiz__info-box {
+    width: 100%;
+    margin-top: 4rem;
+    padding: 2rem;
+    border: 1px solid #f2d6d6;
+    border-radius: .4rem;
+    background-color: #fef8f8;
+    font-size: 1.4rem;
+    text-align: center; }
+  .quiz__loader {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+    transition: 1s all; }
+  .quiz__loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s; }
+  .quiz__loader-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5rem;
+    transform: translate(-50%, -50%); }
+  .quiz__select {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem; }
+  .quiz__question {
+    font-size: 1.2rem;
+    text-align: center; }
+  .quiz__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    flex-basis: 48%;
+    margin-top: 2rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: .6s all; }
+    .quiz__box:hover {
+      box-shadow: 0 0.9rem 2.6rem rgba(0, 0, 0, 0.1); }
+    .quiz__box.selected {
+      color: #31bff0;
+      border: 1px solid #31bff0; }
+  .quiz__box-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    flex-basis: 48%;
+    margin-top: 2rem;
+    border-radius: 4px;
+    background-color: #32beef;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s all; }
+    .quiz__box-next a {
+      color: #fff;
+      text-decoration: none; }
+    .quiz__box-next:hover {
+      box-shadow: 0 0.9rem 2.6rem rgba(0, 0, 0, 0.1); }
+  .quiz__box-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    flex-basis: 48%;
+    margin-top: 2rem;
+    border-radius: 4px;
+    background-color: #f29245;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s all; }
+    .quiz__box-results:hover {
+      box-shadow: 0 2.9rem 4.6rem rgba(0, 0, 0, 0.1); }
+  .quiz__box:last-child {
+    background-color: #31bff0; }
+  .quiz__box-button {
+    text-decoration: none;
+    color: black;
+    font-size: 1.6rem; }
+  .quiz__box-answer {
+    position: absolute;
+    left: 2rem;
+    top: 1.2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: black;
+    text-transform: uppercase; }
+  .quiz__box-next {
+    color: #fff;
+    text-decoration: none; }
+  .quiz__box-header {
+    color: #31bff0;
+    text-transform: uppercase; }
+
+.results {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #f1f7f8;
+  animation-name: show;
+  animation-duration: 2s; }
+  .results__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 111.8rem;
+    margin: 0 auto; }
+  .results__content {
+    margin-top: -6rem;
+    text-align: center; }
+  .results__heading {
+    font-size: 5.8rem;
+    text-align: center; }
+  .results__correct-answer__number {
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    text-align: center; }
+  .results__correct-answer__output {
+    color: #6fbe2e;
+    font-size: 2.5rem;
+    font-weight: 700; }
+  .results__score {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 2.6rem; }
+  .results__score-answers {
+    font-size: 1.4rem; }
+    .results__score-answers span {
+      color: #6fbe2e;
+      font-weight: 600;
+      font-size: 1.7rem; }
+  .results__score-bonus {
+    font-size: 1.4rem; }
+    .results__score-bonus span {
+      color: #6fbe2e;
+      font-weight: 600;
+      font-size: 1.7rem; }
+  .results__final-score {
+    margin-top: 1.5rem;
+    font-size: 2.5rem; }
+
+@keyframes show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }

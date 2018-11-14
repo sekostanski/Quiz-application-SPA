@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+        <link rel="stylesheet" href="external/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <title>Quiz app</title>
+    </head>
+    <body>
+        <div id="main__container">    
+        </div>
+
+
+    <script id="category__page" type="text/x-handlebars-template">
+        <section class="category">
+            <div class="category__container">
+                <div class="category__header-content">
+                    <h1 class="category__header">Please select quiz category</h1>
+                </div>
+                <div class="category__select">
+                    <div class="category__box">
+                        <h2 class="category__box-header sport">Sport</h2>
+                        <a href="#" data-category="21" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header history">History</h2>
+                        <a href="#" data-category="23" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header movies">Geography</h2>
+                        <a href="#" data-category="22" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header music">Music</h2>
+                        <a href="#" data-category="12" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header famous people">Computers</h2>
+                        <a href="#" data-category="18" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header programming">Cartoon & animation</h2>
+                        <a href="#" data-category="32" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header nature">Mythology</h2>
+                        <a href="#" data-category="20" class="bttn category__action">Select category</a>
+                    </div>
+                    <div class="category__box">
+                        <h2 class="category__box-header geography">Celebrities</h2>
+                        <a href="#" data-category="26" class="bttn category__action">Select category</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </script> 
+    
+
+    <script id="quiz__page" type="text/x-handlebars-template">
+        <section class="quiz">
+            <div class="quiz__loader">
+                <img class="quiz__loader-spinner" src="./img/loader.gif" alt="">
+            </div>
+            <div class="quiz__container">
+                <div class="quiz__question">
+                    <h2 class="quiz__category">Sport</h2>
+                </div>
+                <div class="quiz__select">
+                    <div class="quiz__box">
+                        Question
+                    </div> 
+                    <div class="quiz__box">
+                        Question
+                    </div>
+                    <div class="quiz__box">
+                        Question
+                    </div>  
+                    <div class="quiz__box">
+                        Question
+                    </div> 
+                    <div class="quiz__box-next">
+                        Next question
+                    </div> 
+                </div>
+            </div>    
+        </section>
+    </script> 
+
+    <script id="main__page" type="text/x-handlebars-template">
+        <section class="welcome">
+            <div class="welcome__container">
+                <div class="welcome__content">
+                    <h1 class="welcome__heading">Quiz application.</h1>
+                    <p class="welcome__instructions">Press button to start game!</p>
+                    <a href="#" class="bttn start">Start</a>
+                </div>
+            </div>
+        </section>
+    </script>     
+    
+    <script id="results" type="text/x-handlebars-template">
+        <section class="results">
+            <div class="results__container">
+                
+            </div>
+        </section>
+    </script>
+
+
+        
+        
+     
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="external/lightbox2-master/dist/js/lightbox.js"></script>
+    <script src="external/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="internal_script/internal_scripts.js"></script>
+    </body>
+</html>
+
+

@@ -1,0 +1,128 @@
+$primary: #16d3fe;
+$secondary: #171e41;
+$primary_light: #e5faff;
+
+$font_light: #9a9dae;
+$font_dark: #9a9a9a;
+
+
+
+//media querries
+
+$phone: 599px;
+$tablet_port: 600px;
+$tablet_land: 900px;
+$desktop: 1200px;
+$desktop_plus: 1420px;
+$big_desktop: 1800px;
+
+
+@mixin main_shadow {
+    box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
+}
+
+
+
+
+
+
+@mixin mediaq($media) {
+    @if $media == phone {
+      @media only screen and (max-width: $phone) { @content; }
+    }
+    @else if $media == tab-port {
+      @media only screen and (min-width: $tablet_port) and (max-width: $tablet-land - 1) { @content; }
+    }
+    @else if $media == tab-land {
+        @media only screen and (min-width: $tablet_land) and (max-width: $desktop - 1) { @content; }
+    }
+    @else if $media == desktop_plus {
+        @media only screen and (min-width: $desktop) and (max-width: $desktop_plus - 1) { @content; }
+    }
+    @else if $media == wide_screen {
+      @media only screen and (min-width: $big_desktop) { @content; }
+    }
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; //1rem = 10px;
+
+    @include mediaq(phone) {
+        font-size: 62.5%;
+      }
+    @include mediaq(tab-port) {
+        font-size: 55%;
+    }
+    @include mediaq(tab-land) {
+        font-size: 57.5%;
+    }
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    line-height: 1.6;
+    @include mediaq(phone) {
+        width: 96%;
+        margin: 0 auto;
+      }
+    @include mediaq(tab-port) {
+        width: 98%;
+        margin: 0 auto;
+    }
+    @include mediaq(tab-land) {
+        width: 98%;
+        margin: 0 auto;
+    }
+    @include mediaq(desktop_plus) {
+        width: 98%;
+        margin: 0 auto;
+    }
+}
+
+.container {
+    max-width: 117.2rem;
+    margin: 0 auto;
+    }
+
+.bttn-main:link,
+.bttn-main:visited {
+    display: inline-block;
+    padding: 1.1rem 2.1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1;
+    color: #fff;
+    border-radius: 26px;
+    box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
+    background-color: $primary;
+    transition: all 1s;
+
+    @include mediaq(phone) {
+        width: 60%;
+        margin-top: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+

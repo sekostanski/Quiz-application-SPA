@@ -1,79 +1,80 @@
+
 //Render variables
-const welcomePage = document.querySelector("#main__page").innerHTML;
-const categoryPage = document.querySelector("#category__page").innerHTML;
-const quizPage = document.querySelector("#quiz__page").innerHTML;
-const resultPage = document.querySelector("#results").innerHTML;
+var welcomePage = document.querySelector("#main__page").innerHTML;
+var categoryPage = document.querySelector("#category__page").innerHTML;
+var quizPage = document.querySelector("#quiz__page").innerHTML;
+var resultPage = document.querySelector("#results").innerHTML;
 
 //app variables
-const bttn = document.querySelector(".start");
-const container = document.querySelector("#main__container");
-let ajaxLink = "";
-let currentQuestion = 0;
-const maxQuestionNumber = 9;
-let isSelected = false;
-let startTime = null;
-let endTime = null;
-let calculatedGoodAnswers = null;
-let measuredTimePoints = null;
-
-
+var bttn = document.querySelector(".start");
+var container = document.querySelector("#main__container");
+var ajaxLink = "";
+var currentQuestion = 0;
+var maxQuestionNumber = 9;
+var isSelected = false;
+var startTime = null;
+var endTime = null;
+var calculatedGoodAnswers = null;
+var measuredTimePoints = null;
 
 //Rendering subpages
 //******************************************************** */
-function render(selector){
-    let currentTemplate = Handlebars.compile(selector);
-    let withContext = currentTemplate();
+function render(selector) {
+    var currentTemplate = Handlebars.compile(selector);
+    var withContext = currentTemplate();
 
     container.innerHTML = "";
     container.innerHTML = withContext;
 }
 
 //Main site template, load subpages with event delegation
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     render(welcomePage);
 });
 
 //Build API link
-function buildApiReq(category){
-    let link = `https://opentdb.com/api.php?amount=10&category=${category}&type=multiple`;
+function buildApiReq(category) {
+    var link = "https://opentdb.com/api.php?amount=10&category=" + category + "&type=multiple";
     return link;
 }
 
 // Clear Loader
-function clearLoader(){
-    const loaderContent = document.querySelector(".quiz__loader");
-    setTimeout(() => {
+function clearLoader() {
+    var loaderContent = document.querySelector(".quiz__loader");
+    setTimeout(function () {
         loaderContent.classList.add("loaded");
         checkStartTime();
-    },2000)
+    }, 2000);
 }
 
 //check end time
-function checkEndTime(){
-    endTime = + new Date();
+function checkEndTime() {
+    endTime = +new Date();
 }
 
 //check start time
-function checkStartTime(){
-    startTime = + new Date();
+function checkStartTime() {
+    startTime = +new Date();
 }
 
 //measure difference time/ calculate time bonus points
-function measureTimePoints(start, end){
-    let maxTime = 500000;
-    let bonusTime = end - start;
-    let timePoints = 0;
-        if(((maxTime - bonusTime) / 150).toFixed() < 0){
-            timePoints = 0
-        } else {
-            timePoints = ((maxTime - bonusTime) / 150).toFixed();
-        }
+function measureTimePoints(start, end) {
+    var maxTime = 500000;
+    var bonusTime = end - start;
+    var timePoints = 0;
+    if (((maxTime - bonusTime) / 150).toFixed() < 0) {
+        timePoints = 0;
+    } else {
+        timePoints = ((maxTime - bonusTime) / 150).toFixed();
+    }
     return timePoints;
 }
 
 //Shuffle array
 function shuffle(array) {
-    let j, x, i;
+    var j = void 0,
+        x = void 0,
+        i = void 0;
     for (i = array.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));
         x = array[i];
@@ -84,95 +85,102 @@ function shuffle(array) {
 }
 
 //gathering Api data
-function getAjaxData(){
+function getAjaxData() {
 
     //ajax fetch data
-    const ajaxPromise = new Promise(function(resolve,reject) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET",ajaxLink, true);
-        xhr.addEventListener("load", () => resolve(xhr.responseText));
+    var ajaxPromise = new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", ajaxLink, true);
+        xhr.addEventListener("load", function () {
+            return resolve(xhr.responseText);
+        });
         xhr.send();
     });
-    ajaxPromise.then(function(res){
+    ajaxPromise.then(function (res) {
         dataController.buildQuestionPack(res);
         loadQuestionPackage();
     });
 }
 
 //load start quiz content
-function loadQuestionPackage(){
-    let buttons = Array.from(document.querySelectorAll(".quiz__box"));
-    let questionHolder = document.querySelector(".quiz__category");
-    let loadedData = dataController.getData();
+function loadQuestionPackage() {
+    var buttonsCol = document.querySelectorAll(".quiz__box");
+    var buttons= Array.prototype.slice.call( buttonsCol, 0 );
+    var questionHolder = document.querySelector(".quiz__category");
+    var loadedData = dataController.getData();
 
     //create question
     questionHolder.innerHTML = loadedData[currentQuestion].question;
 
     //create answers
-    buttons.forEach((button,i) => {
+    buttons.forEach(function (button, i) {
         button.innerHTML = loadedData[currentQuestion].answers[i];
     });
 }
 //Display alert info
-function displayMessage(message){
-    let boxMessage = document.createElement("div");
+function displayMessage(message) {
+    var boxMessage = document.createElement("div");
     boxMessage.classList.add("quiz__info-box");
     boxMessage.innerHTML = message;
     container.firstElementChild.lastElementChild.insertAdjacentElement("beforeend", boxMessage);
-    setTimeout(function(){
-        let destroyedInfo = container.firstElementChild.lastElementChild.lastElementChild;
+    setTimeout(function () {
+        var destroyedInfo = container.firstElementChild.lastElementChild.lastElementChild;
         destroyedInfo.remove();
-    },2000);
+    }, 2000);
 }
 
 //check is user select answer
-function isAnswerSelected(target){
-    let selectedBttn = target;
-    let checkedAnswer = false;
-    allBttn = Array.from(selectedBttn.parentNode.children);
+function isAnswerSelected(target) {
+    var selectedBttn = target;
+    var checkedAnswer = false;
+    allBttnCol = selectedBttn.parentNode.children;
+    var allBttn = Array.prototype.slice.call( allBttnCol, 0 );
 
-    for(let i = 0; i < allBttn.length; i++){
-        if(allBttn[i].classList.contains("selected")){
+    for (var i = 0; i < allBttn.length; i++) {
+        if (allBttn[i].classList.contains("selected")) {
             checkedAnswer = true;
             break;
-        } 
+        }
     }
     return checkedAnswer;
 }
 
 // clar selected button
 function clearSelected(target) {
-    allBttn = Array.from(target.parentNode.children);
-    allBttn.forEach(el => {
-        if(el.classList.contains("selected")){
+    allBttnCol = target.parentNode.children;
+    var allBttn = Array.prototype.slice.call( allBttnCol, 0 );
+    allBttn.forEach(function (el) {
+        if (el.classList.contains("selected")) {
             el.classList.remove("selected");
-    }})
-    }
+        }
+    });
+}
 
 //User select answer / check isSelected already
-function selectAnswer(target){
-    let selectedBttn = target;
-        allBttn = Array.from(selectedBttn.parentNode.children);
-        isSelected = false;
-        allBttn.forEach(el => {
-            if(el.classList.contains("selected")){
-                isSelected = true;
-            }
-        });
-
-        if(isSelected === true){
-            displayMessage("Only one answer is correct!");
-        } else {
-            selectedBttn.classList.add("selected");
-            dataController.addUserAnswer(target.innerHTML);
+function selectAnswer(target) {
+    var selectedBttn = target;
+    allBttnCol = selectedBttn.parentNode.children;
+    var allBttn = Array.prototype.slice.call( allBttnCol, 0 );
+    isSelected = false;
+    allBttn.forEach(function (el) {
+        if (el.classList.contains("selected")) {
+            isSelected = true;
         }
+    });
+
+    if (isSelected === true) {
+        displayMessage("Only one answer is correct!");
+    } else {
+        selectedBttn.classList.add("selected");
+        dataController.addUserAnswer(target.innerHTML);
+    }
 }
 
 //Calculate correct answers
-function calcCorrectAnswers(userAnswers, correctAnswers){
-    let checkedAnswers = 0;
-    correctAnswers.forEach((el,i) => {
-        if(el.correctAnswer === userAnswers[i]){
+function calcCorrectAnswers(userAnswers, correctAnswers) {
+    var checkedAnswers = 0;
+    correctAnswers.forEach(function (el, i) {
+        if (el.correctAnswer === userAnswers[i]) {
             checkedAnswers++;
         }
     });
@@ -180,7 +188,7 @@ function calcCorrectAnswers(userAnswers, correctAnswers){
 }
 
 //Reset data before new game
-function resetData(){
+function resetData() {
     ajaxLink = "";
     currentQuestion = 0;
     isSelected = false;
@@ -193,10 +201,10 @@ function resetData(){
 
 //*********************************************************** */
 //Render category select page + build data 
-container.addEventListener("click", (e) => {
-    if(e.target.classList.contains("start")){
+container.addEventListener("click", function (e) {
+    if (e.target.classList.contains("start")) {
         render(categoryPage);
-    } else if (e.target.classList.contains("category__action")){
+    } else if (e.target.classList.contains("category__action")) {
         //rendering quiz template
         render(quizPage);
         //quizPage operations
@@ -210,65 +218,61 @@ container.addEventListener("click", (e) => {
 });
 
 //Main data controler
-let dataController = (function(){
+var dataController = function () {
 
-    let quizData = [];
+    var quizData = [];
 
-    let userAnswers = [];
+    var userAnswers = [];
 
     return {
-        buildQuestionPack: function(stringData){
+        buildQuestionPack: function buildQuestionPack(stringData) {
             ajaxData = JSON.parse(stringData);
-            ajaxData.results.forEach((el,i) => {
-              
+            ajaxData.results.forEach(function (el, i) {
+
                 //build answers
                 el.incorrect_answers.push(el.correct_answer);
                 shuffle(el.incorrect_answers);
 
-                
                 //push object
                 quizData.push({
-                    index: i+1,
+                    index: i + 1,
                     question: el.question,
                     answers: el.incorrect_answers,
                     correctAnswer: el.correct_answer
                 });
-                
-                
-            })
+            });
         },
-        addUserAnswer: function(data){
+        addUserAnswer: function addUserAnswer(data) {
             userAnswers.push(data);
         },
-        getUserAnswers: function(){
+        getUserAnswers: function getUserAnswers() {
             return userAnswers;
         },
-        addQuestionData: function(data){
+        addQuestionData: function addQuestionData(data) {
             return quizData.push(data);
         },
-        getData: function(){
+        getData: function getData() {
             return quizData;
         },
-        resetData: function(){
+        resetData: function resetData() {
             quizData = [];
             userAnswers = [];
         }
-    }
-
-})();
+    };
+}();
 
 //event delegation
 
-container.addEventListener("click", (e) => {
-    if(e.target.classList.contains("quiz__box")){
+container.addEventListener("click", function (e) {
+    if (e.target.classList.contains("quiz__box")) {
         selectAnswer(e.target);
     }
 });
 
 //Clear selected, load next question
-container.addEventListener("click", (e) => {
-    if(e.target.classList.contains("quiz__box-next")){
-        if(currentQuestion >= maxQuestionNumber - 1){
+container.addEventListener("click", function (e) {
+    if (e.target.classList.contains("quiz__box-next")) {
+        if (currentQuestion >= maxQuestionNumber - 1) {
             currentQuestion++;
             e.target.innerHTML = "Show results";
             e.target.classList.remove("quiz__box-next");
@@ -276,13 +280,13 @@ container.addEventListener("click", (e) => {
             //clear selected
             clearSelected(e.target);
             loadQuestionPackage();
-        } else if(isAnswerSelected(e.target)){
-          clearSelected(e.target);
-          //increment question id
-          currentQuestion++;
-          //load current question
-          loadQuestionPackage();
-          //clear selected button
+        } else if (isAnswerSelected(e.target)) {
+            clearSelected(e.target);
+            //increment question id
+            currentQuestion++;
+            //load current question
+            loadQuestionPackage();
+            //clear selected button
         } else {
             displayMessage("Please choose answer!");
         }
@@ -290,23 +294,16 @@ container.addEventListener("click", (e) => {
 });
 
 //Build result outpout
-function buildOutputResults(){
-    let resultsContainer = document.querySelector(".results__container");
-    let resultTemplate = `<div class="results__content">
-    <h1 class="results__heading">Your results:</h1>
-    <p class="results__correct-answer__number">You answear correct for <span class="results__correct-answer__output">${calculatedGoodAnswers}</span> question!</p>
-    <h2 class="results__score">Score:</h2>
-    <p class="results__score-answers">Correct answer score: <span class="results__question-score">${calculatedGoodAnswers * 1000} Pts</span></p>
-    <p class="results__score-bonus">Time bonus score: <span class="results__time-score">${measuredTimePoints} Pts</span></p>
-    <h2 class="results__final-score">Your overall score: <span>${(parseInt(measuredTimePoints) + (calculatedGoodAnswers * 1000))}</span></h2><a href="#" class="bttn newGame">New game</a>
-</div>`;
+function buildOutputResults() {
+    var resultsContainer = document.querySelector(".results__container");
+    var resultTemplate = "<div class=\"results__content\">\n    <h1 class=\"results__heading\">Your results:</h1>\n    <p class=\"results__correct-answer__number\">You answear correct for <span class=\"results__correct-answer__output\">" + calculatedGoodAnswers + "</span> question!</p>\n    <h2 class=\"results__score\">Score:</h2>\n    <p class=\"results__score-answers\">Correct answer score: <span class=\"results__question-score\">" + calculatedGoodAnswers * 1000 + " Pts</span></p>\n    <p class=\"results__score-bonus\">Time bonus score: <span class=\"results__time-score\">" + measuredTimePoints + " Pts</span></p>\n    <h2 class=\"results__final-score\">Your overall score: <span>" + (parseInt(measuredTimePoints) + calculatedGoodAnswers * 1000) + "</span></h2><a href=\"#\" class=\"bttn newGame\">New game</a>\n</div>";
     resultsContainer.innerHTML = resultTemplate;
 }
 
 //Clear selected, load next question
-container.addEventListener("mousedown", (e) => {
-    if(e.target.classList.contains("quiz__box-results")){
-        if(isAnswerSelected(e.target)){
+container.addEventListener("mousedown", function (e) {
+    if (e.target.classList.contains("quiz__box-results")) {
+        if (isAnswerSelected(e.target)) {
             //check answer time
             checkEndTime();
             //calculate good answers from dataController
@@ -318,14 +315,14 @@ container.addEventListener("mousedown", (e) => {
             //Output results
             buildOutputResults();
         } else {
-            displayMessage("Please choose answer!sdfgvdfgdvfgvdfg");
+            displayMessage("Please choose answer!");
         }
     }
 });
 
 //Start new game, clear variables
-container.addEventListener("click", (e) => {
-    if(e.target.classList.contains("newGame")){
+container.addEventListener("click", function (e) {
+    if (e.target.classList.contains("newGame")) {
         resetData();
         render(welcomePage);
     }

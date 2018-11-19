@@ -18,7 +18,8 @@ $big_desktop: 1800px;
 
 
 @mixin main_shadow {
-    box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
+            box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
 }
 
 
@@ -60,11 +61,13 @@ $big_desktop: 1800px;
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
 }
 
 html {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     font-size: 62.5%; //1rem = 10px;
 
     @include mediaq(phone) {
@@ -115,8 +118,10 @@ body {
     line-height: 1;
     color: #fff;
     border-radius: 26px;
-    box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
+            box-shadow: 0 0.20rem 1rem rgba(0, 0, 0, .15);
     background-color: $primary;
+    -webkit-transition: all 1s;
     transition: all 1s;
 
     @include mediaq(phone) {

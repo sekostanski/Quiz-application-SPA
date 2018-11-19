@@ -10,10 +10,12 @@
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: .1rem;
+    -webkit-transition: 1s all;
     transition: 1s all;
     &:hover {
         background-color: #7aca39;
-        box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
+        -webkit-box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
+                box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
     }
 }
 .bttn.newGame {
@@ -21,7 +23,8 @@
     background-color: #7aca39;
 }
 .bttn.category__action {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 
 
@@ -33,19 +36,31 @@
 }
 //Main template
 .welcome {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100vw;
     height: 100vh;
     background-color: #f1f7f8;
 
     &__container {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         max-width: 111.8rem;
-        margin: 0 auto;
     }
     &__content {
         text-align: center;
@@ -61,14 +76,22 @@
 
 //Category template
 .category {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100%;
     height: 100vh;
     background-color: #f1f7f8;
-    animation-name: show;
-    animation-duration: 2s;
+    -webkit-animation-name: show;
+            animation-name: show;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
 
     &__container {
         max-width: 111.8rem;
@@ -79,9 +102,14 @@
         font-weight: 600;
     }
     &__select {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
         margin-top: 2rem;
     }
     &__action {
@@ -90,19 +118,31 @@
         font-weight: 600;
     }
     &__box {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         padding: 1rem;
-        flex-basis: 26rem;
+        -ms-flex-preferred-size: 26rem;
+            flex-basis: 26rem;
         height: 26rem;
         margin-top: 2rem;
         border-radius: 4px;
         background-color: #fff;
+        -webkit-transition: 1s all;
         transition: 1s all;
         &:hover {
-            box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
+            -webkit-box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
+                    box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
         }
     }
     &__box-header {
@@ -116,14 +156,22 @@
 
 //Category template
 .quiz {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100%;
     height: 100vh;
     background-color: #f1f7f8;
-    animation-name: show;
-    animation-duration: 2s;
+    -webkit-animation-name: show;
+            animation-name: show;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
 
     &__container {
         width: 111.8rem;
@@ -149,11 +197,13 @@
         left: 0;
         z-index: 100;
         background-color: #fff;
+        -webkit-transition: 1s all;
         transition: 1s all;
     }
     &__loader.loaded {
         opacity: 0;
         visibility: hidden;
+        -webkit-transition: all 1s;
         transition: all 1s;
     }
     &__loader-spinner {
@@ -161,13 +211,22 @@
         top: 50%;
         left: 50%;
         width: 5rem;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
     }
     &__select {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: row-reverse;
+                flex-direction: row-reverse;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
         margin-top: 3rem;
     }
     &__question {
@@ -175,12 +234,19 @@
         text-align: center;
     }
     &__box {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         position: relative;
         padding: 1rem;
-        flex-basis: 48%;
+        -ms-flex-preferred-size: 48%;
+            flex-basis: 48%;
         margin-top: 2rem;
         border: 1px solid transparent;
         border-radius: 4px;
@@ -189,9 +255,11 @@
         font-weight: 500;
         font-size: 1.4rem;
         cursor: pointer;
+        -webkit-transition: .6s all;
         transition: .6s all;
         &:hover {
-            box-shadow: 0 0.9rem 2.6rem rgba(0,0,0,0.1);
+            -webkit-box-shadow: 0 0.9rem 2.6rem rgba(0,0,0,0.1);
+                    box-shadow: 0 0.9rem 2.6rem rgba(0,0,0,0.1);
         }
         &.selected {
             color: #31bff0;
@@ -199,12 +267,19 @@
         }
     }
     &__box-next {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         position: relative;
         padding: 1rem;
-        flex-basis: 48%;
+        -ms-flex-preferred-size: 48%;
+            flex-basis: 48%;
         margin-top: 2rem;
         border-radius: 4px;
         background-color: #32beef;
@@ -214,22 +289,31 @@
         color: #fff;
         text-decoration: none;
         cursor: pointer;
+        -webkit-transition: .3s all;
         transition: .3s all;
         a {
             color: #fff;
             text-decoration: none;
         }
         &:hover {
-            box-shadow: 0 0.9rem 2.6rem rgba(0,0,0,0.1);
+            -webkit-box-shadow: 0 0.9rem 2.6rem rgba(0,0,0,0.1);
+                    box-shadow: 0 0.9rem 2.6rem rgba(0,0,0,0.1);
         }
     }
     &__box-results {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         position: relative;
         padding: 1rem;
-        flex-basis: 48%;
+        -ms-flex-preferred-size: 48%;
+            flex-basis: 48%;
         margin-top: 2rem;
         border-radius: 4px;
         background-color: #f29245;
@@ -239,9 +323,11 @@
         color: #fff;
         text-decoration: none;
         cursor: pointer;
+        -webkit-transition: .3s all;
         transition: .3s all;
         &:hover {
-            box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
+            -webkit-box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
+                    box-shadow: 0 2.9rem 4.6rem rgba(0,0,0,0.1);
         }
     }
     &__box:last-child {
@@ -275,17 +361,32 @@
 //Results
 .results {
     height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #f1f7f8;
-    animation-name: show;
-    animation-duration: 2s;
+    -webkit-animation-name: show;
+            animation-name: show;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
 
     &__container {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         max-width: 111.8rem;
         margin: 0 auto;
     }
@@ -328,12 +429,6 @@
             font-size: 1.7rem
         }
     }
-    &__question-score {
-
-    }
-    &__time-score {
-
-    }
     &__final-score {
         margin-top: 1.5rem;
         font-size: 2.5rem;
@@ -341,6 +436,10 @@
 }
 
 //animation
+@-webkit-keyframes show {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
 @keyframes show {
     0% {opacity: 0}
     100% {opacity: 1}

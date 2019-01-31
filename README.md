@@ -1,4 +1,3 @@
-# Quiz-application-SPA
-Html, Css, Javascript, Handlebars, API
+Check live http://quiz.skostanski.pl/ 
 
-Check live: quiz.skostanski.pl
+
